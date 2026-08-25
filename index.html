@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basith Salman | Principal Systems Architect & Lead Software Engineer</title>
+    <meta name="description" content="Portfolio of Basith Salman - Principal Systems Architect with 20+ years of experience in ultra-low latency trading systems, mission-critical distributed architectures, defense POS, and quant finance analytics.">
+    <meta name="keywords" content="Basith Salman, Systems Architect, C++, Python, Ultra-Low Latency, Quant Finance, Web3, Linux Real-Time, DoD NACI Cleared">
+    <meta name="author" content="Basith Salman">
+
+    <!-- Open Graph / Social -->
+    <meta property="og:title" content="Basith Salman | Principal Systems Architect">
+    <meta property="og:description" content="20+ Years Enterprise Engineering Experience across High-Frequency Trading, Defense POS, Telecommunications, and Quantitative Screener Platforms.">
+    <meta property="og:type" content="website">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@500;700;800&display=swap" rel="stylesheet">
+
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Background Canvas Animation -->
+    <canvas id="ambient-canvas"></canvas>
+
+    <!-- Navigation Header -->
+    <header class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#hero" class="nav-logo">
+                <span class="logo-accent">&lt;/&gt;</span> Basith<span class="logo-highlight">Salman</span>
+            </a>
+            <nav class="nav-links">
+                <a href="#about" class="nav-item">About</a>
+                <a href="#portfolio" class="nav-item">Portfolio</a>
+                <a href="#demos" class="nav-item">Live Demos</a>
+                <a href="#experience" class="nav-item">Experience</a>
+                <a href="#skills" class="nav-item">Skills</a>
+                <a href="#contact" class="nav-item btn-nav">Contact</a>
+            </nav>
+            <div class="mobile-toggle" id="mobile-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero-section">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="clearance-badge">
+                    <span class="badge-dot"></span>
+                    <span class="badge-text"><i class="fas fa-shield-halved"></i> US Citizen | DoD NACI Cleared</span>
+                </div>
+                <h1 class="hero-title">
+                    Basith <span class="gradient-text">Salman</span>
+                </h1>
+                <h2 class="hero-subtitle">
+                    Principal Systems Architect & Lead Software Engineer
+                </h2>
+                <p class="hero-description">
+                    20+ years of high-impact engineering leadership across ultra-low-latency financial trading systems (NYSE, Morgan Stanley), DoD enterprise retail platforms ($15B AAFES), telecom infrastructure (Ziply Fiber), and quantitative market screeners.
+                </p>
+
+                <div class="hero-highlights">
+                    <div class="highlight-item">
+                        <i class="fas fa-graduation-cap"></i>
+                        <span>M.S. Computer Science (UMass Lowell)</span>
+                    </div>
+                    <div class="highlight-item">
+                        <i class="fas fa-microchip"></i>
+                        <span>Modern C++ (11/14/17) & Kernel Optimization</span>
+                    </div>
+                    <div class="highlight-item">
+                        <i class="fas fa-server"></i>
+                        <span>Distributed Systems & Web Architecture</span>
+                    </div>
+                </div>
+
+                <div class="hero-cta">
+                    <a href="#demos" class="btn btn-primary">
+                        <i class="fas fa-bolt"></i> Interactive Demos
+                    </a>
+                    <a href="#portfolio" class="btn btn-secondary">
+                        <i class="fas fa-folder-open"></i> View Projects
+                    </a>
+                    <a href="Basith_Salman_Resume.pdf" target="_blank" class="btn btn-outline" download>
+                        <i class="fas fa-file-pdf"></i> Resume PDF
+                    </a>
+                </div>
+            </div>
+
+            <!-- Terminal Hero Widget -->
+            <div class="hero-terminal">
+                <div class="terminal-header">
+                    <div class="terminal-buttons">
+                        <span class="btn-term close"></span>
+                        <span class="btn-term minimize"></span>
+                        <span class="btn-term maximize"></span>
+                    </div>
+                    <div class="terminal-title">basith@arch-linux: ~/systems</div>
+                </div>
+                <div class="terminal-body" id="hero-terminal-body">
+                    <p class="term-line"><span class="term-prompt">$</span> <span class="term-cmd">systemctl status basith-core.service</span></p>
+                    <p class="term-output success">● basith-core.service - Principal Systems Engine</p>
+                    <p class="term-output">   Loaded: loaded (/etc/systemd/system/basith-core.service; enabled)</p>
+                    <p class="term-output">   Active: <span class="active-badge">active (running)</span> since 2004-06-01</p>
+                    <p class="term-output">   Engine: Sub-millisecond Execution | C++17 | Python | Laravel</p>
+                    <p class="term-line"><span class="term-prompt">$</span> <span class="term-cmd">cat ~/metrics.json</span></p>
+                    <div class="term-json">
+                        {<br>
+                        &nbsp;&nbsp;<span class="json-key">"experience_years"</span>: <span class="json-val">20+</span>,<br>
+                        &nbsp;&nbsp;<span class="json-key">"latency_benchmark"</span>: <span class="json-val">"&lt; 1ms"</span>,<br>
+                        &nbsp;&nbsp;<span class="json-key">"retail_volume"</span>: <span class="json-val">"$15 Billion DoD POS"</span>,<br>
+                        &nbsp;&nbsp;<span class="json-key">"trading_nodes"</span>: <span class="json-val">"NYSE UTP / Morgan Stanley"</span>,<br>
+                        &nbsp;&nbsp;<span class="json-key">"location"</span>: <span class="json-val">"Irving / Dallas, TX"</span><br>
+                        }
+                    </div>
+                    <p class="term-line"><span class="term-prompt">$</span> <span class="term-cmd" id="typing-text"></span><span class="cursor">_</span></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Metrics Stats Bar -->
+    <section class="stats-bar">
+        <div class="stats-container">
+            <div class="stat-card">
+                <div class="stat-number" data-target="20">20+</div>
+                <div class="stat-label">Years Enterprise Experience</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">&lt; 1 ms</div>
+                <div class="stat-label">Sub-Millisecond Execution</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">$15B+</div>
+                <div class="stat-label">DoD Payment Systems</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">800+</div>
+                <div class="stat-label">Modernized Retail Outlets</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Executive Summary</span>
+                <h2 class="section-title">Architecting High-Scale, Ultra-Reliable Systems</h2>
+                <div class="section-divider"></div>
+            </div>
+
+            <div class="about-grid">
+                <div class="about-card">
+                    <div class="about-icon"><i class="fas fa-chart-line"></i></div>
+                    <h3>FinTech & Ultra-Low Latency</h3>
+                    <p>Pioneered sub-millisecond market data feed engines and order routing systems at NYSE Euronext, Morgan Stanley, Tradeweb, and Interactive Data Corp. Expert in RHEL Real-Time kernel tuning, low-overhead IPC, and shared memory execution.</p>
+                </div>
+
+                <div class="about-card">
+                    <div class="about-icon"><i class="fas fa-shield-cat"></i></div>
+                    <h3>Defense & Enterprise Infrastructure</h3>
+                    <p>Architected global EMV Chip & PIN payment processing and POS infrastructure for $15B DoD military exchanges (AAFES). Built HSM synthetic monitoring engines at JPMorgan Chase to protect root CA keys.</p>
+                </div>
+
+                <div class="about-card">
+                    <div class="about-icon"><i class="fas fa-network-wired"></i></div>
+                    <h3>Modern Web, Quant & Web3 Systems</h3>
+                    <p>Designed end-to-end quantitative stock screener engines (BioQuant), Web3 multiplayer poker platforms with real-time Socket.IO synchronization, and network topology visualization systems for telecom networks (Ziply Fiber).</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Projects Section -->
+    <section id="portfolio" class="section bg-alt">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Featured Engineering Works</span>
+                <h2 class="section-title">Diverse Project Portfolio</h2>
+                <div class="section-divider"></div>
+            </div>
+
+            <!-- Filter Buttons -->
+            <div class="portfolio-filter">
+                <button class="filter-btn active" data-filter="all">All Projects</button>
+                <button class="filter-btn" data-filter="fintech">FinTech & Quant</button>
+                <button class="filter-btn" data-filter="web3">Web3 & Gaming</button>
+                <button class="filter-btn" data-filter="systems">Systems & Security</button>
+                <button class="filter-btn" data-filter="enterprise">Defense & Enterprise</button>
+            </div>
+
+            <div class="portfolio-grid">
+                <!-- Project 1: Quant Screener -->
+                <div class="project-card" data-category="fintech">
+                    <div class="project-banner quant-bg">
+                        <span class="project-tag">Quant / FinTech</span>
+                        <i class="fas fa-chart-candlestick project-icon"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>BioQuant Stocks Screener Engine</h3>
+                        <p>High-throughput automated market screener analyzing real-time stock symbols, technical indicators (RSI, Moving Averages), and news Sentiment. Integrates a Python/FastAPI analytical backend with custom C++ modules.</p>
+                        <div class="project-tech">
+                            <span>Python</span><span>FastAPI</span><span>C++</span><span>PostgreSQL</span><span>Systemd</span>
+                        </div>
+                        <div class="project-actions">
+                            <a href="#demos" onclick="switchToDemo('quant')" class="btn-sm btn-primary">Try Live Screener Demo</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2: VirtuaPangea Web3 Poker -->
+                <div class="project-card" data-category="web3">
+                    <div class="project-banner web3-bg">
+                        <span class="project-tag">Web3 & Gaming</span>
+                        <i class="fas fa-gamepad project-icon"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>VirtuaPangea & Copia Web3 Metaverse</h3>
+                        <p>Real-time multiplayer Web3 gaming & poker platform architecture featuring low-latency Socket.IO event channels, Next.js frontend, Express backend, and Steam OpenID authentication integration.</p>
+                        <div class="project-tech">
+                            <span>Next.js</span><span>Node.js</span><span>Socket.IO</span><span>Web3</span><span>Steam Auth</span>
+                        </div>
+                        <div class="project-actions">
+                            <a href="#demos" onclick="switchToDemo('web3')" class="btn-sm btn-primary">View Web3 Diagram</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3: Security Sentinel -->
+                <div class="project-card" data-category="systems">
+                    <div class="project-banner security-bg">
+                        <span class="project-tag">Systems & Security</span>
+                        <i class="fas fa-shield-virus project-icon"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>Dev Environment Security Sentinel</h3>
+                        <p>Persistent security daemon monitoring system socket traffic, auditing git repositories for unauthorized network outbound patterns, and sending real-time desktop/email alerts for mitigation.</p>
+                        <div class="project-tech">
+                            <span>Python</span><span>Linux Sockets</span><span>Systemd</span><span>Auditd</span><span>Bash</span>
+                        </div>
+                        <div class="project-actions">
+                            <a href="#demos" onclick="switchToDemo('sentinel')" class="btn-sm btn-primary">View Live CLI Demo</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4: NYSE Universal Trading Platform -->
+                <div class="project-card" data-category="fintech">
+                    <div class="project-banner hft-bg">
+                        <span class="project-tag">Ultra-Low Latency</span>
+                        <i class="fas fa-bolt-lightning project-icon"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>NYSE Universal Trading Platform (UTP)</h3>
+                        <p>Architected software infrastructure migration of NYSE trading platform across hundreds of servers from NYC to Chicago data centers. Sub-millisecond latency reduction via Red Hat Real-Time kernels.</p>
+                        <div class="project-tech">
+                            <span>Modern C++</span><span>RHEL Real-Time</span><span>Shared Memory</span><span>IPC</span><span>TCP/IP</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 5: AAFES $15B DoD POS Modernization -->
+                <div class="project-card" data-category="enterprise">
+                    <div class="project-banner dod-bg">
+                        <span class="project-tag">Enterprise Defense</span>
+                        <i class="fas fa-building-columns project-icon"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>DoD Military Exchange Global POS</h3>
+                        <p>Formulated architectural blueprint for an $80M modernization of military retail POS infrastructure serving worldwide US Armed Forces. Implemented global EMV Chip & PIN payment processing engines.</p>
+                        <div class="project-tech">
+                            <span>C++</span><span>EMV Payment</span><span>PKI</span><span>PHP</span><span>Oracle</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 6: Ziply Fiber Network Topology -->
+                <div class="project-card" data-category="systems">
+                    <div class="project-banner telecom-bg">
+                        <span class="project-tag">Telecommunications</span>
+                        <i class="fas fa-network-wired project-icon"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>Ziply Fiber Matrix 4/5 & Network Topology</h3>
+                        <p>Core backend infrastructure managing incident workflows, Walled Garden subscriber access (LDAP/RADIUS), and low-level C++ network mapping for 4 Northwestern states.</p>
+                        <div class="project-tech">
+                            <span>C++</span><span>Python</span><span>Laravel</span><span>MariaDB</span><span>LDAP</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Live Demos Section -->
+    <section id="demos" class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Hands-On Testing</span>
+                <h2 class="section-title">Interactive Technology Demos</h2>
+                <p class="section-sub">Experience real-time interactive previews of custom engineering modules right in your browser.</p>
+                <div class="section-divider"></div>
+            </div>
+
+            <!-- Demo Selector Tabs -->
+            <div class="demo-tabs">
+                <button class="demo-tab-btn active" id="tab-quant" onclick="switchToDemo('quant')">
+                    <i class="fas fa-table-cells"></i> Quant Screener Demo
+                </button>
+                <button class="demo-tab-btn" id="tab-sentinel" onclick="switchToDemo('sentinel')">
+                    <i class="fas fa-terminal"></i> Security Sentinel CLI
+                </button>
+                <button class="demo-tab-btn" id="tab-web3" onclick="switchToDemo('web3')">
+                    <i class="fas fa-cubes"></i> Web3 Poker Architecture
+                </button>
+            </div>
+
+            <!-- Demo 1: Quant Stock Screener Simulator -->
+            <div class="demo-wrapper active" id="demo-quant">
+                <div class="demo-box">
+                    <div class="demo-controls">
+                        <div class="search-box">
+                            <i class="fas fa-search"></i>
+                            <input type="text" id="screener-search" placeholder="Search Ticker (e.g. NVDA, AAPL, BIIB)..." onkeyup="filterScreener()">
+                        </div>
+                        <div class="filter-select">
+                            <select id="sector-filter" onchange="filterScreener()">
+                                <option value="all">All Sectors</option>
+                                <option value="Biotech">Biotech & Pharma</option>
+                                <option value="Tech">Technology & HFT</option>
+                                <option value="Defense">Defense & Security</option>
+                            </select>
+                        </div>
+                        <button class="btn-sm btn-primary" onclick="refreshScreenerData()">
+                            <i class="fas fa-rotate"></i> Refresh Prices
+                        </button>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="screener-table" id="screener-table">
+                            <thead>
+                                <tr>
+                                    <th>Ticker</th>
+                                    <th>Company / Sector</th>
+                                    <th>Price</th>
+                                    <th>24h Change</th>
+                                    <th>RSI (14)</th>
+                                    <th>Volume</th>
+                                    <th>Quant Score</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="screener-body">
+                                <!-- Populated dynamically by JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="demo-footer-info">
+                        <span><i class="fas fa-circle-info"></i> Simulated live ticker feed from Basith's BioQuant Screener module. Updates every 3 seconds.</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Demo 2: Security Sentinel CLI Simulator -->
+            <div class="demo-wrapper" id="demo-sentinel">
+                <div class="demo-box terminal-box">
+                    <div class="terminal-bar">
+                        <span>sentinel-daemon v2.4 (Active Monitor)</span>
+                        <div class="term-controls">
+                            <button class="btn-xs" onclick="clearSentinelTerm()"><i class="fas fa-trash"></i> Clear</button>
+                            <button class="btn-xs" onclick="triggerSentinelScan()"><i class="fas fa-play"></i> Run Security Audit</button>
+                        </div>
+                    </div>
+                    <div class="sentinel-output" id="sentinel-output">
+                        <div class="log-entry info">[SYSTEM] Sentinel socket listener initialized on 127.0.0.1:9090</div>
+                        <div class="log-entry info">[MONITOR] Inspecting active TCP/UDP sockets...</div>
+                        <div class="log-entry success">[PASS] No unauthorized outbound egress detected on sensitive ports.</div>
+                        <div class="log-entry info">[GIT AUDIT] Scanning active workspace repositories...</div>
+                        <div class="log-entry success">[PASS] 0 security vulnerabilities or token leaks found in current commit diffs.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Demo 3: Web3 Poker Architecture Interactive Diagram -->
+            <div class="demo-wrapper" id="demo-web3">
+                <div class="demo-box arch-box">
+                    <div class="arch-flow">
+                        <div class="arch-node">
+                            <div class="node-icon"><i class="fab fa-react"></i></div>
+                            <h4>Client UI</h4>
+                            <p>Next.js 14 / Tailwind</p>
+                        </div>
+                        <div class="arch-arrow"><i class="fas fa-arrow-right"></i><br>WebSocket</div>
+                        <div class="arch-node active-node">
+                            <div class="node-icon"><i class="fab fa-node-js"></i></div>
+                            <h4>State Engine</h4>
+                            <p>Node.js / Socket.IO</p>
+                        </div>
+                        <div class="arch-arrow"><i class="fas fa-arrow-right"></i><br>REST / RPC</div>
+                        <div class="arch-node">
+                            <div class="node-icon"><i class="fas fa-link"></i></div>
+                            <h4>Blockchain Layer</h4>
+                            <p>Ethereum Smart Contracts</p>
+                        </div>
+                    </div>
+                    <div class="arch-details">
+                        <h4>Sub-Second Synchronized Poker State Pipeline</h4>
+                        <p>Built to handle real-time multiplayer card dealing and chip pot settlement with zero dropouts, backed by Steam OpenID authentication and resilient socket reconnect handlers.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Experience Timeline Section -->
+    <section id="experience" class="section bg-alt">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Professional History</span>
+                <h2 class="section-title">20+ Years Track Record</h2>
+                <div class="section-divider"></div>
+            </div>
+
+            <div class="timeline">
+                <!-- Timeline Item 1 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">11/2023 – Present</div>
+                    <div class="timeline-content">
+                        <h3>Principal Software Consultant / Independent Engineer</h3>
+                        <span class="timeline-org">Self-Employed | Remote</span>
+                        <p>Architect and deliver custom financial stock screeners, low-latency market analysis tools, and scalable web platforms using Modern C++, Python, PHP (Laravel), React, and RESTful APIs. Design backend automations and high-throughput job queue systems.</p>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 2 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">03/2020 – 09/2023</div>
+                    <div class="timeline-content">
+                        <h3>Application Developer III (Senior Infrastructure Lead)</h3>
+                        <span class="timeline-org">Ziply Fiber | Remote</span>
+                        <p>Architected and maintained core backend infrastructure across 4 Northwestern states. Owned mission-critical Serviceman authentication, LDAP, RADIUS, and real-time C++ network visualization mapping systems.</p>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 3 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">03/2019 – 03/2020</div>
+                    <div class="timeline-content">
+                        <h3>Lead POS & Full Stack Engineer</h3>
+                        <span class="timeline-org">US Army & Air Force Exchange Service (AAFES) | Dallas, TX</span>
+                        <p>Engineered backend services for an $8B DoD e-commerce portal (aafes.com) serving global military personnel using C++, PHP, and JavaScript. Built automated hardware integrations for shipping logistics.</p>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 4 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">11/2018 – 02/2019</div>
+                    <div class="timeline-content">
+                        <h3>Senior Infrastructure & Security Developer</h3>
+                        <span class="timeline-org">JPMorgan Chase | Lewisville, TX</span>
+                        <p>Engineered real-time synthetic monitoring and grey-failure detection engines in Modern C++ and .NET Core to protect enterprise Hardware Security Modules (HSMs) housing root CA keys.</p>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 5 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">03/2017 – 12/2017</div>
+                    <div class="timeline-content">
+                        <h3>Senior Systems & Security Architect</h3>
+                        <span class="timeline-org">Wells Fargo | Charlotte, NC</span>
+                        <p>Architected key components of the enterprise Secure Software Portal (SSP) to orchestrate server analytics, system compliance, and automated backups across thousands of bank servers using C++ and PHP.</p>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 6 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">05/2016 – 03/2017</div>
+                    <div class="timeline-content">
+                        <h3>Senior Systems Architect (POS Modernization)</h3>
+                        <span class="timeline-org">NEC / 7-Eleven Inc. | Irving, TX</span>
+                        <p>Architected convergence of fuel and retail POS terminals across 800+ stores in North America using C/C++ and .NET, eliminating dual-system hardware footprints.</p>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 7 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">03/2013 – 11/2013</div>
+                    <div class="timeline-content">
+                        <h3>Ultra-Low-Latency Trading Infrastructure Engineer</h3>
+                        <span class="timeline-org">Morgan Stanley | New York, NY</span>
+                        <p>Optimized institutional securities execution platform in Modern C++/C; achieved significant latency reductions via application profile refactoring and custom Linux kernel tuning. Executed Morgan Stanley / Smith Barney trading engine consolidation.</p>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 8 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">12/2011 – 03/2013</div>
+                    <div class="timeline-content">
+                        <h3>Lead Systems Architect / Trading Infrastructure Lead</h3>
+                        <span class="timeline-org">NYSE Euronext | New York, NY</span>
+                        <p>Directed software infrastructure migration of the NYSE Universal Trading Platform (UTP) across hundreds of servers from NYC to Chicago. Reduced end-to-end transaction latency via Red Hat Enterprise Real-Time kernels.</p>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 9 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">12/2010 – 11/2011</div>
+                    <div class="timeline-content">
+                        <h3>Assistant Vice President (AVP), Software Development</h3>
+                        <span class="timeline-org">Tradeweb | Jersey City, NJ</span>
+                        <p>Engineered multi-asset fixed-income trading software using high-performance C++/STL, supporting daily institutional trading volumes exceeding billions of dollars.</p>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 10 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">03/2007 – 10/2010</div>
+                    <div class="timeline-content">
+                        <h3>Senior Systems Engineer (Market Data Infrastructure)</h3>
+                        <span class="timeline-org">Interactive Data Corp (IDC) | White Plains, NY</span>
+                        <p>Developed sub-millisecond market data feed engines delivering real-time quotes to 80 countries worldwide using C/C++. Diagnosed Trans-Atlantic packet latency bottlenecks between NYSE and London.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Matrix Section -->
+    <section id="skills" class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Technical Competencies</span>
+                <h2 class="section-title">Core Skills & Expertise</h2>
+                <div class="section-divider"></div>
+            </div>
+
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3><i class="fas fa-code"></i> Low-Level & Systems</h3>
+                    <div class="skill-tags">
+                        <span class="skill-badge high">Modern C++ (11/14/17/20)</span>
+                        <span class="skill-badge high">C Programming</span>
+                        <span class="skill-badge high">Linux Real-Time Kernel</span>
+                        <span class="skill-badge high">Shared Memory & IPC</span>
+                        <span class="skill-badge">TCP/IP & SOCKS5</span>
+                        <span class="skill-badge">Mach Microkernels</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3><i class="fas fa-laptop-code"></i> Web & Full Stack</h3>
+                    <div class="skill-tags">
+                        <span class="skill-badge high">Python (FastAPI, Flask)</span>
+                        <span class="skill-badge high">Modern PHP (Laravel)</span>
+                        <span class="skill-badge high">JavaScript (ES6+, Node.js)</span>
+                        <span class="skill-badge">React & Next.js</span>
+                        <span class="skill-badge">RESTful APIs</span>
+                        <span class="skill-badge">HTML5 / CSS3</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3><i class="fas fa-database"></i> Data & Messaging</h3>
+                    <div class="skill-tags">
+                        <span class="skill-badge high">PostgreSQL</span>
+                        <span class="skill-badge high">MariaDB / MySQL</span>
+                        <span class="skill-badge high">Redis Caching</span>
+                        <span class="skill-badge">Kafka & RabbitMQ</span>
+                        <span class="skill-badge">Oracle & Sybase</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3><i class="fas fa-lock"></i> Security & DevOps</h3>
+                    <div class="skill-tags">
+                        <span class="skill-badge high">DoD NACI Clearance</span>
+                        <span class="skill-badge high">PKI & OpenSSL/TLS</span>
+                        <span class="skill-badge high">HSM Security</span>
+                        <span class="skill-badge">EMV Payment Systems</span>
+                        <span class="skill-badge">Docker & Linux Admin</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Education & Credentials Card -->
+            <div class="credentials-card">
+                <div class="cred-item">
+                    <i class="fas fa-user-graduate cred-icon"></i>
+                    <div>
+                        <h4>Master of Science (M.S.) in Computer Science</h4>
+                        <p>University of Massachusetts Lowell — Lowell, MA</p>
+                    </div>
+                </div>
+                <div class="cred-item">
+                    <i class="fas fa-university cred-icon"></i>
+                    <div>
+                        <h4>Bachelor of Science (B.S.) in Electrical & Electronics</h4>
+                        <p>National Institute of Technology (NIT) — Surathkal, India</p>
+                    </div>
+                </div>
+                <div class="cred-item">
+                    <i class="fas fa-passport cred-icon"></i>
+                    <div>
+                        <h4>Clearance & Citizenship</h4>
+                        <p>US Citizen | DoD NACI Clearance Verified</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Footer Section -->
+    <section id="contact" class="section bg-alt">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Get In Touch</span>
+                <h2 class="section-title">Connect with Basith Salman</h2>
+                <div class="section-divider"></div>
+            </div>
+
+            <div class="contact-box">
+                <div class="contact-info">
+                    <div class="info-card">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <span>Email Address</span>
+                            <h4 id="email-text">basithsalman@mindspring.com</h4>
+                        </div>
+                        <button class="btn-xs btn-outline" onclick="copyEmail()"><i class="fas fa-copy"></i> Copy</button>
+                    </div>
+
+                    <div class="info-card">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <span>Phone Number</span>
+                            <h4>(917) 656-4593</h4>
+                        </div>
+                    </div>
+
+                    <div class="info-card">
+                        <i class="fas fa-location-dot"></i>
+                        <div>
+                            <span>Location</span>
+                            <h4>Irving / Dallas, TX</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-downloads">
+                    <h3><i class="fas fa-file-arrow-down"></i> Download Formal Resume</h3>
+                    <p>Available in Microsoft Word (.docx) and Adobe PDF (.pdf) formats directly from local host storage.</p>
+                    <div class="download-buttons">
+                        <a href="Basith_Salman_Resume.pdf" target="_blank" download class="btn btn-primary">
+                            <i class="fas fa-file-pdf"></i> Download PDF Resume
+                        </a>
+                        <a href="Basith_Salman_Resume.docx" download class="btn btn-secondary">
+                            <i class="fas fa-file-word"></i> Download DOCX Resume
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container footer-content">
+            <p>&copy; 2026 Basith Salman. All Rights Reserved. Hosted locally via 24x7 Linux Systemd Web Engine.</p>
+            <div class="footer-links">
+                <a href="#hero">Back to Top <i class="fas fa-arrow-up"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>

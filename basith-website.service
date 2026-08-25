@@ -1,0 +1,16 @@
+[Unit]
+Description=Basith Salman Personal Portfolio Web Server
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/node /home/bsalman/MY-LOCAL-WEBSITE/server.js
+WorkingDirectory=/home/bsalman/MY-LOCAL-WEBSITE
+Restart=always
+RestartSec=5
+Environment=PORT=8080
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=default.target
