@@ -470,9 +470,9 @@
                         classDef addrStyle fill:#31104b,stroke:#c084fc,stroke-width:2px,color:#fff;
                         classDef vaultStyle fill:#3f1d1d,stroke:#fbbf24,stroke-width:2px,color:#fff;
 
-                        DeployScript["📜 Deployer Script<br/>(Issuer Admin Executing Hardhat/Ethers)"]:::scriptStyle
+                        DeployScript["📜 Deployer Script<br/>Issuer Admin Executing Hardhat/Ethers"]:::scriptStyle
 
-                        subgraph STEP1 ["STEP A: DEPLOY REGISTRIES & COMPLIANCE"]
+                        subgraph STEP1 ["STEP A: DEPLOY REGISTRIES AND COMPLIANCE"]
                             ClaimTopics["📜 ClaimTopicsRegistry"]:::contractStyle
                             TrustedIssuers["🔑 TrustedIssuersRegistry"]:::contractStyle
                             IdentityStorage["💾 IdentityRegistryStorage"]:::contractStyle
@@ -481,22 +481,22 @@
                         end
 
                         subgraph STEP2 ["STEP B: CAPTURE ADDRESSES"]
-                            IDAddr["📍 identityRegistryAddress<br/>(0x5FbDB231...)"]:::addrStyle
-                            CompAddr["📍 complianceAddress<br/>(0xe7f1725E...)"]:::addrStyle
+                            IDAddr["📍 identityRegistryAddress<br/>0x5FbDB231..."]:::addrStyle
+                            CompAddr["📍 complianceAddress<br/>0xe7f1725E..."]:::addrStyle
                         end
 
                         subgraph STEP3 ["STEP C: DEPLOY HOUSE TOKEN CONTRACT"]
-                            ConstructorCall["🧱 Constructor Call<br/>('100 Palm Ave', 'LLC-998241')"]:::scriptStyle
-                            HouseToken["🏠 RealEstateHouseToken<br/>Deployed to Blockchain (Block #100)"]:::contractStyle
+                            ConstructorCall["🧱 Constructor Call<br/>100 Palm Ave, LLC-998241"]:::scriptStyle
+                            HouseToken["🏠 RealEstateHouseToken<br/>Deployed to Blockchain - Block 100"]:::contractStyle
                         end
 
                         subgraph STEP4 ["STEP D: INITIALIZE COMPLIANCE LINKS"]
-                            InitCall["🔗 initializeHouseToken(<br/>identityRegistryAddress, complianceAddress)"]:::scriptStyle
+                            InitCall["🔗 initializeHouseToken<br/>identityRegistryAddress, complianceAddress"]:::scriptStyle
                         end
 
                         subgraph STEP5 ["STEP E: MINT 1,000,000 HOUSE SHARES"]
-                            MintCall["💰 issueInitialHouseShares(<br/>schwabTreasuryVault)"]:::scriptStyle
-                            Vault["🏛️ Schwab Treasury Vault<br/>Balance: 1,000,000 HOUSE ($1M Equity)"]:::vaultStyle
+                            MintCall["💰 issueInitialHouseShares<br/>schwabTreasuryVault"]:::scriptStyle
+                            Vault["🏛️ Schwab Treasury Vault<br/>Balance: 1,000,000 HOUSE - 1M Equity"]:::vaultStyle
                         end
 
                         DeployScript -->|1. Deploys| STEP1

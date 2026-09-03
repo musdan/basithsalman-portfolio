@@ -151,9 +151,9 @@ function switchToDemo(demoKey) {
     if (selectedTab) selectedTab.classList.add('active');
     if (selectedWrapper) selectedWrapper.classList.add('active');
 
-    if (window.mermaid) {
+    if (window.mermaid && demoKey === 'rwa') {
         try {
-            window.mermaid.init(undefined, document.querySelectorAll('.mermaid'));
+            window.mermaid.run({ querySelector: '.mermaid' });
         } catch (e) {}
     }
 }
