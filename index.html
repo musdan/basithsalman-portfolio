@@ -463,50 +463,48 @@
                         </p>
                     </div>
 
-                    <div class="mermaid" style="background: rgba(9, 13, 22, 0.95); padding: 20px; border-radius: 10px; border: 1px solid var(--border-card);">
-                    graph TD
-                        classDef scriptStyle fill:#1e293b,stroke:#38bdf8,stroke-width:2px,color:#fff;
-                        classDef contractStyle fill:#0f172a,stroke:#4ade80,stroke-width:2px,color:#fff;
-                        classDef addrStyle fill:#31104b,stroke:#c084fc,stroke-width:2px,color:#fff;
-                        classDef vaultStyle fill:#3f1d1d,stroke:#fbbf24,stroke-width:2px,color:#fff;
+                    <div class="rwa-flow-diagram">
+                        <div class="flow-step">
+                            <div class="step-header"><span class="step-badge">STEP A</span> 📜 Deploy Registries & Compliance Contracts</div>
+                            <div class="step-nodes">
+                                <span class="node-tag"><i class="fas fa-scroll"></i> ClaimTopicsRegistry</span>
+                                <span class="node-tag"><i class="fas fa-key"></i> TrustedIssuersRegistry</span>
+                                <span class="node-tag"><i class="fas fa-database"></i> IdentityRegistryStorage</span>
+                                <span class="node-tag"><i class="fas fa-id-card"></i> IdentityRegistry</span>
+                                <span class="node-tag"><i class="fas fa-scale-balanced"></i> DefaultCompliance</span>
+                            </div>
+                        </div>
 
-                        DeployScript["📜 Deployer Script<br/>Issuer Admin Executing Hardhat/Ethers"]:::scriptStyle
+                        <div class="flow-arrow"><i class="fas fa-arrow-down"></i> Returns Live Blockchain Addresses</div>
 
-                        subgraph STEP1 ["STEP A: DEPLOY REGISTRIES AND COMPLIANCE"]
-                            ClaimTopics["📜 ClaimTopicsRegistry"]:::contractStyle
-                            TrustedIssuers["🔑 TrustedIssuersRegistry"]:::contractStyle
-                            IdentityStorage["💾 IdentityRegistryStorage"]:::contractStyle
-                            IdentityRegistry["🆔 IdentityRegistry"]:::contractStyle
-                            Compliance["⚖️ DefaultCompliance"]:::contractStyle
-                        end
+                        <div class="flow-step">
+                            <div class="step-header"><span class="step-badge">STEP B</span> 📍 Capture Deployed Contract Addresses</div>
+                            <div class="step-nodes">
+                                <span class="addr-tag"><i class="fas fa-location-dot"></i> identityRegistryAddress: <code>0x5FbDB2315678afecb367f032d93F642f64180aa3</code></span>
+                                <span class="addr-tag"><i class="fas fa-location-dot"></i> complianceAddress: <code>0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512</code></span>
+                            </div>
+                        </div>
 
-                        subgraph STEP2 ["STEP B: CAPTURE ADDRESSES"]
-                            IDAddr["📍 identityRegistryAddress<br/>0x5FbDB231..."]:::addrStyle
-                            CompAddr["📍 complianceAddress<br/>0xe7f1725E..."]:::addrStyle
-                        end
+                        <div class="flow-arrow"><i class="fas fa-arrow-down"></i> Pass Parameters to Constructor & Initializer</div>
 
-                        subgraph STEP3 ["STEP C: DEPLOY HOUSE TOKEN CONTRACT"]
-                            ConstructorCall["🧱 Constructor Call<br/>100 Palm Ave, LLC-998241"]:::scriptStyle
-                            HouseToken["🏠 RealEstateHouseToken<br/>Deployed to Blockchain - Block 100"]:::contractStyle
-                        end
+                        <div class="flow-step">
+                            <div class="step-header"><span class="step-badge">STEP C & D</span> 🧱 Deploy & Initialize House Security Token</div>
+                            <div class="step-nodes">
+                                <span class="node-tag"><i class="fas fa-cube"></i> Constructor("100 Palm Ave", "LLC-998241")</span>
+                                <span class="node-tag"><i class="fas fa-house"></i> RealEstateHouseToken (Block #100)</span>
+                                <span class="node-tag"><i class="fas fa-link"></i> initializeHouseToken(identityRegistryAddress, complianceAddress)</span>
+                            </div>
+                        </div>
 
-                        subgraph STEP4 ["STEP D: INITIALIZE COMPLIANCE LINKS"]
-                            InitCall["🔗 initializeHouseToken<br/>identityRegistryAddress, complianceAddress"]:::scriptStyle
-                        end
+                        <div class="flow-arrow"><i class="fas fa-arrow-down"></i> Trigger Share Minting</div>
 
-                        subgraph STEP5 ["STEP E: MINT 1,000,000 HOUSE SHARES"]
-                            MintCall["💰 issueInitialHouseShares<br/>schwabTreasuryVault"]:::scriptStyle
-                            Vault["🏛️ Schwab Treasury Vault<br/>Balance: 1,000,000 HOUSE - 1M Equity"]:::vaultStyle
-                        end
-
-                        DeployScript -->|1. Deploys| STEP1
-                        STEP1 -->|2. Returns Addresses| STEP2
-                        DeployScript -->|3. Runs Constructor| ConstructorCall
-                        ConstructorCall -->|Deploys| HouseToken
-                        STEP2 -->|4. Passes Addresses to| InitCall
-                        InitCall -->|5. Binds Registries to| HouseToken
-                        DeployScript -->|6. Triggers| MintCall
-                        MintCall -->|7. Mints 1M Tokens into| Vault
+                        <div class="flow-step">
+                            <div class="step-header"><span class="step-badge">STEP E</span> 💰 Issue Initial House Shares (1,000,000 HOUSE)</div>
+                            <div class="step-nodes">
+                                <span class="vault-tag"><i class="fas fa-coins"></i> issueInitialHouseShares(schwabTreasuryVault)</span>
+                                <span class="vault-tag"><i class="fas fa-building-columns"></i> Schwab Treasury Vault Balance: <strong>1,000,000 HOUSE ($1M Equity)</strong></span>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="arch-details" style="margin-top: 20px;">
