@@ -138,7 +138,11 @@ function initPortfolioFilters() {
 }
 
 /* Live Demo Switcher */
-function switchToDemo(demoKey) {
+function switchToDemo(demoKey, event) {
+    if (event && event.preventDefault) {
+        event.preventDefault();
+    }
+
     const tabs = document.querySelectorAll('.demo-tab-btn');
     const wrappers = document.querySelectorAll('.demo-wrapper');
 
@@ -151,10 +155,9 @@ function switchToDemo(demoKey) {
     if (selectedTab) selectedTab.classList.add('active');
     if (selectedWrapper) selectedWrapper.classList.add('active');
 
-    if (window.mermaid && demoKey === 'rwa') {
-        try {
-            window.mermaid.run({ querySelector: '.mermaid' });
-        } catch (e) {}
+    const demosSection = document.getElementById('demos');
+    if (demosSection) {
+        demosSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 }
 

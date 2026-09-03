@@ -224,7 +224,7 @@
                             <span>Solidity 0.8.17</span><span>ERC-3643</span><span>Ethers.js</span><span>ONCHAINID</span><span>Hardhat</span>
                         </div>
                         <div class="project-actions">
-                            <a href="#demos" onclick="switchToDemo('rwa')" class="btn-sm btn-primary"><i class="fas fa-sitemap"></i> View Architecture Diagram</a>
+                            <a href="#demos" onclick="switchToDemo('rwa', event)" class="btn-sm btn-primary"><i class="fas fa-sitemap"></i> View Architecture Diagram</a>
                         </div>
                     </div>
                 </div>
@@ -241,7 +241,7 @@
                             <span>Python</span><span>FastAPI</span><span>C++</span><span>PostgreSQL</span><span>Systemd</span>
                         </div>
                         <div class="project-actions">
-                            <a href="#demos" onclick="switchToDemo('quant')" class="btn-sm btn-primary">Try Live Screener Demo</a>
+                            <a href="#demos" onclick="switchToDemo('quant', event)" class="btn-sm btn-primary">Try Live Screener Demo</a>
                         </div>
                     </div>
                 </div>
@@ -342,13 +342,13 @@
 
             <!-- Demo Selector Tabs -->
             <div class="demo-tabs">
-                <button class="demo-tab-btn active" id="tab-quant" onclick="switchToDemo('quant')">
+                <button class="demo-tab-btn active" id="tab-quant" onclick="switchToDemo('quant', event)">
                     <i class="fas fa-table-cells"></i> Quant Screener Demo
                 </button>
                 <button class="demo-tab-btn" id="tab-sentinel" onclick="switchToDemo('sentinel')">
                     <i class="fas fa-terminal"></i> Security Sentinel CLI
                 </button>
-                <button class="demo-tab-btn" id="tab-rwa" onclick="switchToDemo('rwa')">
+                <button class="demo-tab-btn" id="tab-rwa" onclick="switchToDemo('rwa', event)">
                     <i class="fab fa-ethereum"></i> ERC-3643 RWA Architecture
                 </button>
                 <button class="demo-tab-btn" id="tab-web3" onclick="switchToDemo('web3')">
