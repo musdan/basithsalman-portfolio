@@ -588,6 +588,7 @@ h1, h2, h3, h4, h5 {
 
 .quant-bg { background: linear-gradient(135deg, rgba(16, 185, 129, 0.3), rgba(6, 78, 59, 0.8)); }
 .web3-bg { background: linear-gradient(135deg, rgba(139, 92, 246, 0.3), rgba(76, 29, 149, 0.8)); }
+.ethereum-bg { background: linear-gradient(135deg, rgba(56, 189, 248, 0.4), rgba(124, 58, 237, 0.8)); }
 .security-bg { background: linear-gradient(135deg, rgba(244, 63, 94, 0.3), rgba(136, 19, 55, 0.8)); }
 .hft-bg { background: linear-gradient(135deg, rgba(0, 242, 254, 0.3), rgba(15, 23, 42, 0.9)); }
 .dod-bg { background: linear-gradient(135deg, rgba(245, 158, 11, 0.3), rgba(120, 53, 15, 0.8)); }

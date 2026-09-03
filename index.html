@@ -31,6 +31,9 @@
     <!-- FontAwesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+    <!-- Mermaid.js for Diagrams -->
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -200,6 +203,7 @@
             <!-- Filter Buttons -->
             <div class="portfolio-filter">
                 <button class="filter-btn active" data-filter="all">All Projects</button>
+                <button class="filter-btn" data-filter="ethereum">Ethereum & RWA</button>
                 <button class="filter-btn" data-filter="fintech">FinTech & Quant</button>
                 <button class="filter-btn" data-filter="web3">Web3 & Gaming</button>
                 <button class="filter-btn" data-filter="systems">Systems & Security</button>
@@ -207,6 +211,23 @@
             </div>
 
             <div class="portfolio-grid">
+                <!-- Project: ERC-3643 Real Estate Tokenization -->
+                <div class="project-card" data-category="ethereum">
+                    <div class="project-banner ethereum-bg">
+                        <span class="project-tag">Ethereum & RWA</span>
+                        <i class="fab fa-ethereum project-icon"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>ERC-3643 $1M Real Estate Tokenization</h3>
+                        <p>Institutional permissioned RWA tokenization platform for a $1,000,000 Manhattan property. Features automated on-chain KYC verification, ONCHAINID identity registries, and compliant share issuance.</p>
+                        <div class="project-tech">
+                            <span>Solidity 0.8.17</span><span>ERC-3643</span><span>Ethers.js</span><span>ONCHAINID</span><span>Hardhat</span>
+                        </div>
+                        <div class="project-actions">
+                            <a href="#demos" onclick="switchToDemo('rwa')" class="btn-sm btn-primary"><i class="fas fa-sitemap"></i> View Architecture Diagram</a>
+                        </div>
+                    </div>
+                </div>
                 <!-- Project 1: Quant Screener -->
                 <div class="project-card" data-category="fintech">
                     <div class="project-banner quant-bg">
@@ -327,6 +348,9 @@
                 <button class="demo-tab-btn" id="tab-sentinel" onclick="switchToDemo('sentinel')">
                     <i class="fas fa-terminal"></i> Security Sentinel CLI
                 </button>
+                <button class="demo-tab-btn" id="tab-rwa" onclick="switchToDemo('rwa')">
+                    <i class="fab fa-ethereum"></i> ERC-3643 RWA Architecture
+                </button>
                 <button class="demo-tab-btn" id="tab-web3" onclick="switchToDemo('web3')">
                     <i class="fas fa-cubes"></i> Web3 Poker Architecture
                 </button>
@@ -423,6 +447,75 @@
                     <div class="arch-details">
                         <h4>Sub-Second Synchronized Poker State Pipeline</h4>
                         <p>Built to handle real-time multiplayer card dealing and chip pot settlement with zero dropouts, backed by Steam OpenID authentication and resilient socket reconnect handlers.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Demo 4: ERC-3643 Real Estate Tokenization Architecture -->
+            <div class="demo-wrapper" id="demo-rwa">
+                <div class="demo-box arch-box">
+                    <div style="text-align: center; margin-bottom: 20px;">
+                        <h3 style="color: var(--accent-cyan); font-size: 1.4rem; margin-bottom: 8px;">
+                            <i class="fab fa-ethereum"></i> ERC-3643 RWA Deployment Workflow & Address Initialization
+                        </h3>
+                        <p style="color: var(--text-muted); font-size: 0.95rem;">
+                            Step-by-step architectural breakdown: Deploying Registries ➔ Capturing Addresses ➔ Passing to Constructor ➔ Calling <code>initializeHouseToken()</code> ➔ Minting 1M Shares into Treasury Vault.
+                        </p>
+                    </div>
+
+                    <div class="mermaid" style="background: rgba(9, 13, 22, 0.95); padding: 20px; border-radius: 10px; border: 1px solid var(--border-card);">
+                    graph TD
+                        classDef scriptStyle fill:#1e293b,stroke:#38bdf8,stroke-width:2px,color:#fff;
+                        classDef contractStyle fill:#0f172a,stroke:#4ade80,stroke-width:2px,color:#fff;
+                        classDef addrStyle fill:#31104b,stroke:#c084fc,stroke-width:2px,color:#fff;
+                        classDef vaultStyle fill:#3f1d1d,stroke:#fbbf24,stroke-width:2px,color:#fff;
+
+                        DeployScript["📜 Deployer Script<br/>(Issuer Admin Executing Hardhat/Ethers)"]:::scriptStyle
+
+                        subgraph STEP1 ["STEP A: DEPLOY REGISTRIES & COMPLIANCE"]
+                            ClaimTopics["📜 ClaimTopicsRegistry"]:::contractStyle
+                            TrustedIssuers["🔑 TrustedIssuersRegistry"]:::contractStyle
+                            IdentityStorage["💾 IdentityRegistryStorage"]:::contractStyle
+                            IdentityRegistry["🆔 IdentityRegistry"]:::contractStyle
+                            Compliance["⚖️ DefaultCompliance"]:::contractStyle
+                        end
+
+                        subgraph STEP2 ["STEP B: CAPTURE ADDRESSES"]
+                            IDAddr["📍 identityRegistryAddress<br/>(0x5FbDB231...)"]:::addrStyle
+                            CompAddr["📍 complianceAddress<br/>(0xe7f1725E...)"]:::addrStyle
+                        end
+
+                        subgraph STEP3 ["STEP C: DEPLOY HOUSE TOKEN CONTRACT"]
+                            ConstructorCall["🧱 Constructor Call<br/>('100 Palm Ave', 'LLC-998241')"]:::scriptStyle
+                            HouseToken["🏠 RealEstateHouseToken<br/>Deployed to Blockchain (Block #100)"]:::contractStyle
+                        end
+
+                        subgraph STEP4 ["STEP D: INITIALIZE COMPLIANCE LINKS"]
+                            InitCall["🔗 initializeHouseToken(<br/>identityRegistryAddress, complianceAddress)"]:::scriptStyle
+                        end
+
+                        subgraph STEP5 ["STEP E: MINT 1,000,000 HOUSE SHARES"]
+                            MintCall["💰 issueInitialHouseShares(<br/>schwabTreasuryVault)"]:::scriptStyle
+                            Vault["🏛️ Schwab Treasury Vault<br/>Balance: 1,000,000 HOUSE ($1M Equity)"]:::vaultStyle
+                        end
+
+                        DeployScript -->|1. Deploys| STEP1
+                        STEP1 -->|2. Returns Addresses| STEP2
+                        DeployScript -->|3. Runs Constructor| ConstructorCall
+                        ConstructorCall -->|Deploys| HouseToken
+                        STEP2 -->|4. Passes Addresses to| InitCall
+                        InitCall -->|5. Binds Registries to| HouseToken
+                        DeployScript -->|6. Triggers| MintCall
+                        MintCall -->|7. Mints 1M Tokens into| Vault
+                    </div>
+
+                    <div class="arch-details" style="margin-top: 20px;">
+                        <h4 style="color: var(--accent-emerald); font-size: 1.1rem; margin-bottom: 10px;">Key Smart Contract Architecture Highlights:</h4>
+                        <ul style="color: var(--text-muted); padding-left: 20px; line-height: 1.8;">
+                            <li><strong>Asset Representation:</strong> 100 Palm Avenue, Miami FL ($1,000,000 appraisal) split into 1,000,000 digital <code>HOUSE</code> shares.</li>
+                            <li><strong>Atomic Initialization:</strong> <code>initializeHouseToken()</code> binds the token to the identity registry and compliance engine.</li>
+                            <li><strong>Automated On-Chain Compliance:</strong> Every transfer automatically checks investor KYC status before allowing tokens to move.</li>
+                        </ul>
                     </div>
                 </div>
             </div>

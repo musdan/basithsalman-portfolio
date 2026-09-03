@@ -150,6 +150,12 @@ function switchToDemo(demoKey) {
 
     if (selectedTab) selectedTab.classList.add('active');
     if (selectedWrapper) selectedWrapper.classList.add('active');
+
+    if (window.mermaid) {
+        try {
+            window.mermaid.init(undefined, document.querySelectorAll('.mermaid'));
+        } catch (e) {}
+    }
 }
 
 /* Quant Screener Demo Data & Engine */
