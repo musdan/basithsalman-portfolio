@@ -269,3 +269,18 @@ function copyEmail() {
         alert("Copied email address to clipboard: " + email);
     });
 }
+
+/* RWA Code Viewer Switcher */
+function switchCodeFile(fileKey) {
+    const codeTabs = document.querySelectorAll('.code-tab-btn');
+    const codeBlocks = document.querySelectorAll('.code-block');
+
+    codeTabs.forEach(t => t.classList.remove('active'));
+    codeBlocks.forEach(b => b.classList.remove('active'));
+
+    const selectedTab = document.getElementById(`codetab-${fileKey}`);
+    const selectedBlock = document.getElementById(`codeblock-${fileKey}`);
+
+    if (selectedTab) selectedTab.classList.add('active');
+    if (selectedBlock) selectedBlock.classList.add('active');
+}

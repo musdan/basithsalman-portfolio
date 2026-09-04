@@ -519,6 +519,239 @@
                             <li><strong>Automated On-Chain Compliance:</strong> Every transfer automatically checks investor KYC status before allowing tokens to move.</li>
                         </ul>
                     </div>
+
+                    <!-- Generated RWA Source Code Viewer -->
+                    <div class="code-viewer-container">
+                        <div style="padding: 14px 20px; background: rgba(15, 23, 42, 0.9); border-bottom: 1px solid var(--border-card); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+                            <h4 style="color: var(--accent-cyan); font-size: 1.05rem; margin: 0;">
+                                <i class="fas fa-code"></i> Generated RWA Smart Contracts & Execution Scripts
+                            </h4>
+                            <span style="font-size: 0.8rem; color: var(--text-dim);"><i class="fas fa-layer-group"></i> Solidity 0.8.17 | Ethers.js</span>
+                        </div>
+
+                        <div class="code-tabs-header">
+                            <button class="code-tab-btn active" id="codetab-token" onclick="switchCodeFile('token')">
+                                <i class="fas fa-file-code" style="color: #60a5fa;"></i> RealEstateHouseToken.sol
+                            </button>
+                            <button class="code-tab-btn" id="codetab-sales" onclick="switchCodeFile('sales')">
+                                <i class="fas fa-file-code" style="color: #34d399;"></i> HouseSalesContract.sol
+                            </button>
+                            <button class="code-tab-btn" id="codetab-deploy" onclick="switchCodeFile('deploy')">
+                                <i class="fab fa-js" style="color: #facc15;"></i> 01-deploy-complete-rwa.ts
+                            </button>
+                            <button class="code-tab-btn" id="codetab-issuer" onclick="switchCodeFile('issuer')">
+                                <i class="fab fa-js" style="color: #c084fc;"></i> 02-issuer-admin-onboarding.ts
+                            </button>
+                            <button class="code-tab-btn" id="codetab-buyer" onclick="switchCodeFile('buyer')">
+                                <i class="fab fa-js" style="color: #f87171;"></i> 03-buyer-alice-purchase.ts
+                            </button>
+                        </div>
+
+                        <div class="code-block-wrapper">
+                            <!-- File 1: RealEstateHouseToken.sol -->
+                            <pre class="code-block active" id="codeblock-token"><code>// SPDX-License-Identifier: GPL-3.0
+pragma solidity 0.8.17;
+
+import "./token/Token.sol";
+
+/**
+ * @title RealEstateHouseToken
+ * @notice ERC-3643 Permissioned Security Token representing 100% legal equity in a $1,000,000 House.
+ * @dev Inherits full compliance hooks, ONCHAINID identity checks, and forced transfer capabilities.
+ */
+contract RealEstateHouseToken is Token {
+
+    // Real Estate Property Metadata
+    string public propertyAddress;             // "100 Palm Avenue, Miami, FL"
+    string public spvLegalRegistrationNumber;   // LLC Filing ID: "LLC-998241"
+    uint256 public constant TOTAL_APPRAISED_VALUE_USD = 1_000_000; // Fixed $1,000,000 appraisal
+
+    event HouseSharesIssued(address indexed treasuryVault, uint256 amount);
+
+    constructor(
+        string memory _propertyAddress,
+        string memory _spvLegalRegistrationNumber
+    ) {
+        propertyAddress = _propertyAddress;
+        spvLegalRegistrationNumber = _spvLegalRegistrationNumber;
+    }
+
+    function issueInitialHouseShares(address _treasuryVault) external onlyOwner {
+        require(_treasuryVault != address(0), "Invalid vault address");
+        mint(_treasuryVault, 1_000_000 * 10**18);
+        emit HouseSharesIssued(_treasuryVault, 1_000_000 * 10**18);
+    }
+}</code></pre>
+
+                            <!-- File 2: HouseSalesContract.sol -->
+                            <pre class="code-block" id="codeblock-sales"><code>// SPDX-License-Identifier: MIT
+pragma solidity 0.8.17;
+
+import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+import "./token/IToken.sol";
+
+/**
+ * @title HouseSalesContract
+ * @notice Handles atomic payment in USD/USDC and delivers permissioned ERC-3643 HOUSE shares to buyers.
+ */
+contract HouseSalesContract {
+
+    IToken public houseToken;
+    IERC20 public usdcToken;
+    address public treasuryVault;
+    uint256 public pricePerTokenUsdc; // 1 USDC (6 decimals) per 1 HOUSE token (18 decimals)
+
+    event HouseSharesPurchased(
+        address indexed buyer,
+        uint256 usdcPaid,
+        uint256 houseSharesReceived
+    );
+
+    constructor(
+        address _houseTokenAddress,
+        address _usdcTokenAddress,
+        address _treasuryVault,
+        uint256 _pricePerTokenUsdc
+    ) {
+        houseToken = IToken(_houseTokenAddress);
+        usdcToken = IERC20(_usdcTokenAddress);
+        treasuryVault = _treasuryVault;
+        pricePerTokenUsdc = _pricePerTokenUsdc;
+    }
+
+    function buyHouseShares(uint256 _usdcAmount) external {
+        require(_usdcAmount > 0, "Payment amount must be greater than zero");
+
+        // 1. Transfer USDC payment from Buyer to Issuer Treasury Vault
+        bool paymentSuccess = usdcToken.transferFrom(msg.sender, treasuryVault, _usdcAmount);
+        require(paymentSuccess, "USDC Payment transfer failed");
+
+        // 2. Calculate HOUSE shares to deliver (18 decimals)
+        uint256 shareAmount = (_usdcAmount * 10**18) / pricePerTokenUsdc;
+
+        // 3. Transfer HOUSE tokens from Treasury Vault to Buyer (Checks KYC On-Chain Automatically!)
+        bool tokenSuccess = houseToken.forcedTransfer(treasuryVault, msg.sender, shareAmount);
+        require(tokenSuccess, "HOUSE Token transfer failed or buyer is not KYC verified!");
+
+        emit HouseSharesPurchased(msg.sender, _usdcAmount, shareAmount);
+    }
+}</code></pre>
+
+                            <!-- File 3: 01-deploy-complete-rwa.ts -->
+                            <pre class="code-block" id="codeblock-deploy"><code>import { ethers } from "hardhat";
+
+async function main() {
+  const [xyzAdmin, kycAuthority, xyzTreasuryVault, investorAlice] = await ethers.getSigners();
+
+  // 1. Deploy Registries & Compliance Modules
+  const ClaimTopicsRegistryFactory = await ethers.getContractFactory("ClaimTopicsRegistry");
+  const claimTopicsRegistry = await ClaimTopicsRegistryFactory.deploy();
+  await claimTopicsRegistry.addClaimTopic(1); // Topic 1 = KYC Required
+
+  const TrustedIssuersRegistryFactory = await ethers.getContractFactory("TrustedIssuersRegistry");
+  const trustedIssuersRegistry = await TrustedIssuersRegistryFactory.deploy();
+  await trustedIssuersRegistry.addTrustedIssuer(kycAuthority.address, [1]);
+
+  const IdentityRegistryStorageFactory = await ethers.getContractFactory("IdentityRegistryStorage");
+  const identityRegistryStorage = await IdentityRegistryStorageFactory.deploy();
+
+  const IdentityRegistryFactory = await ethers.getContractFactory("IdentityRegistry");
+  const identityRegistry = await IdentityRegistryFactory.deploy(
+    trustedIssuersRegistry.address,
+    claimTopicsRegistry.address,
+    identityRegistryStorage.address
+  );
+  await identityRegistryStorage.bindIdentityRegistry(identityRegistry.address);
+
+  const DefaultComplianceFactory = await ethers.getContractFactory("DefaultCompliance");
+  const compliance = await DefaultComplianceFactory.deploy();
+
+  // 2. Deploy Payment Token & House Token
+  const MockUSDCFactory = await ethers.getContractFactory("MockUSDC");
+  const usdcToken = await MockUSDCFactory.deploy();
+
+  const HouseTokenFactory = await ethers.getContractFactory("RealEstateHouseToken");
+  const houseToken = await HouseTokenFactory.deploy("100 Palm Avenue, Miami, FL", "LLC-998241");
+
+  await houseToken.init(identityRegistry.address, compliance.address, "100 Palm Avenue House Token", "HOUSE", 18, ethers.constants.AddressZero);
+  await houseToken.issueInitialHouseShares(xyzTreasuryVault.address);
+
+  // 3. Deploy Sales Contract
+  const SalesFactory = await ethers.getContractFactory("HouseSalesContract");
+  const houseSales = await SalesFactory.deploy(houseToken.address, usdcToken.address, xyzTreasuryVault.address, 1000000);
+  await houseToken.addAgent(houseSales.address);
+
+  console.log("🎉 DEPLOYMENT COMPLETE! All contracts are live on the blockchain.");
+}
+
+main().catch((error) => console.error(error));</code></pre>
+
+                            <!-- File 4: 02-issuer-admin-onboarding.ts -->
+                            <pre class="code-block" id="codeblock-issuer"><code>import { ethers } from "hardhat";
+
+/**
+ * @notice ISSUER ADMIN SCRIPT: Onboards Investor Alice by creating her ONCHAINID,
+ * attaching the KYC Authority's signed claim, and registering her wallet in the IdentityRegistry.
+ */
+async function main() {
+  const [xyzAdmin, kycAuthority, xyzTreasuryVault, investorAlice] = await ethers.getSigners();
+
+  // 1. Deploy Alice's personal ONCHAINID contract
+  const IdentityFactory = await ethers.getContractFactory("Identity");
+  const aliceIdentity = await IdentityFactory.deploy(investorAlice.address, false);
+
+  // 2. Generate Cryptographic KYC Claim (Topic 1) signed by KYC Authority
+  const claimTopic = 1;
+  const claimScheme = 1;
+  const data = ethers.utils.hexlify(ethers.utils.toUtf8Bytes("KYC Verified: US Passport Passed"));
+  const claimHash = ethers.utils.keccak256(
+    ethers.utils.defaultAbiCoder.encode(["address", "uint256", "bytes"], [aliceIdentity.address, claimTopic, data])
+  );
+
+  const signature = await kycAuthority.signMessage(ethers.utils.arrayify(claimHash));
+  await aliceIdentity.addClaim(claimTopic, claimScheme, kycAuthority.address, signature, data, "");
+
+  // 3. Whitelist Alice's wallet in IdentityRegistry
+  const identityRegistry = await ethers.getContractAt("IdentityRegistry", "0xIdentityRegistryAddress...");
+  await identityRegistry.registerIdentity(investorAlice.address, aliceIdentity.address, 840);
+
+  console.log("✅ Investor Alice registered & verified in IdentityRegistry!");
+}
+
+main().catch((error) => console.error(error));</code></pre>
+
+                            <!-- File 5: 03-buyer-alice-purchase.ts -->
+                            <pre class="code-block" id="codeblock-buyer"><code>import { ethers } from "hardhat";
+
+/**
+ * @notice BUYER SCRIPT: Simulates Investor Alice approving her $50,000 USDC payment
+ * and triggering the atomic buy order on HouseSalesContract to receive 50,000 HOUSE shares.
+ */
+async function main() {
+  const [xyzAdmin, kycAuthority, xyzTreasuryVault, investorAlice] = await ethers.getSigners();
+
+  const usdcToken = await ethers.getContractAt("MockUSDC", "0xUsdcAddress...");
+  const houseSales = await ethers.getContractAt("HouseSalesContract", "0xHouseSalesAddress...");
+
+  const paymentAmountUsdc = ethers.utils.parseUnits("50000", 6); // $50,000 USDC
+
+  // STEP 1: ALICE APPROVES PAYMENT
+  console.log("\n🔑 1. Alice Approves $50,000 USDC Payment to HouseSalesContract...");
+  const usdcAliceInstance = usdcToken.connect(investorAlice);
+  await usdcAliceInstance.approve(houseSales.address, paymentAmountUsdc);
+
+  // STEP 2: ALICE EXECUTES ATOMIC BUY ORDER
+  console.log("\n💸 2. Alice Triggers buyHouseShares($50,000 USDC)...");
+  const salesAliceInstance = houseSales.connect(investorAlice);
+  const txBuy = await salesAliceInstance.buyHouseShares(paymentAmountUsdc);
+  await txBuy.wait();
+
+  console.log("🎉 SUCCESS! $50,000 USD paid to Issuer, 50,000 HOUSE shares received in Alice's wallet.");
+}
+
+main().catch((error) => console.error(error));</code></pre>
+                        </div>
+                    </div>
                 </div>
             </div>
 
