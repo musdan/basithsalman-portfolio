@@ -536,6 +536,9 @@
                             <button class="code-tab-btn" id="codetab-sales" onclick="switchCodeFile('sales')">
                                 <i class="fas fa-file-code" style="color: #34d399;"></i> HouseSalesContract.sol
                             </button>
+                            <button class="code-tab-btn" id="codetab-usdc" onclick="switchCodeFile('usdc')">
+                                <i class="fas fa-file-code" style="color: #38bdf8;"></i> MockUSDC.sol
+                            </button>
                             <button class="code-tab-btn" id="codetab-deploy" onclick="switchCodeFile('deploy')">
                                 <i class="fab fa-js" style="color: #facc15;"></i> 01-deploy-complete-rwa.ts
                             </button>
@@ -637,7 +640,29 @@ contract HouseSalesContract {
     }
 }</code></pre>
 
-                            <!-- File 3: 01-deploy-complete-rwa.ts -->
+                            <!-- File 3: MockUSDC.sol -->
+                            <pre class="code-block" id="codeblock-usdc"><code>// SPDX-License-Identifier: MIT
+pragma solidity 0.8.17;
+
+import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
+
+/**
+ * @title MockUSDC
+ * @notice Mock USDC Payment token with 6 decimals for local unit testing & RWA purchases.
+ */
+contract MockUSDC is ERC20 {
+    constructor() ERC20("USD Coin", "USDC") {}
+
+    function decimals() public pure override returns (uint8) {
+        return 6;
+    }
+
+    function mint(address to, uint256 amount) external {
+        _mint(to, amount);
+    }
+}</code></pre>
+
+                            <!-- File 4: 01-deploy-complete-rwa.ts -->
                             <pre class="code-block" id="codeblock-deploy"><code>import { ethers } from "hardhat";
 
 async function main() {
