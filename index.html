@@ -360,49 +360,23 @@
                 </button>
             </div>
 
-            <!-- Demo 1: Quant Stock Screener Simulator -->
+            <!-- Demo 1: Quant Stock Screener Live Performance Dashboard -->
             <div class="demo-wrapper active" id="demo-quant">
-                <div class="demo-box">
-                    <div class="demo-controls">
-                        <div class="search-box">
-                            <i class="fas fa-search"></i>
-                            <input type="text" id="screener-search" placeholder="Search Ticker (e.g. NVDA, AAPL, BIIB)..." onkeyup="filterScreener()">
-                        </div>
-                        <div class="filter-select">
-                            <select id="sector-filter" onchange="filterScreener()">
-                                <option value="all">All Sectors</option>
-                                <option value="Biotech">Biotech & Pharma</option>
-                                <option value="Tech">Technology & HFT</option>
-                                <option value="Defense">Defense & Security</option>
-                            </select>
-                        </div>
-                        <button class="btn-sm btn-primary" onclick="refreshScreenerData()">
-                            <i class="fas fa-rotate"></i> Refresh Prices
-                        </button>
+                <div class="demo-box" style="padding: 0; overflow: hidden; border-radius: 12px; height: 800px; display: flex; flex-direction: column;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 20px; background: #1e293b; border-bottom: 1px solid #334155;">
+                        <span style="font-size: 14px; font-weight: 600; color: #38bdf8; display: flex; align-items: center; gap: 8px;">
+                            <i class="fas fa-chart-line"></i> Live Biotech Quant Performance Dashboard ($0–5M & Multi-Cohort)
+                        </span>
+                        <a href="https://stocks.usintellisoft.com/performance" target="_blank" style="display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px; background: #0284c7; color: #ffffff; border-radius: 6px; font-size: 13px; font-weight: 600; text-decoration: none; transition: background 0.2s;">
+                            <i class="fas fa-external-link-alt"></i> Open Full Screen
+                        </a>
                     </div>
-
-                    <div class="table-responsive">
-                        <table class="screener-table" id="screener-table">
-                            <thead>
-                                <tr>
-                                    <th>Ticker</th>
-                                    <th>Company / Sector</th>
-                                    <th>Price</th>
-                                    <th>24h Change</th>
-                                    <th>RSI (14)</th>
-                                    <th>Volume</th>
-                                    <th>Quant Score</th>
-                                    <th>Status</th>
-                                </tr>
-                            </thead>
-                            <tbody id="screener-body">
-                                <!-- Populated dynamically by JS -->
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="demo-footer-info">
-                        <span><i class="fas fa-circle-info"></i> Simulated live ticker feed from Basith's BioQuant Screener module. Updates every 3 seconds.</span>
-                    </div>
+                    <iframe 
+                        src="https://stocks.usintellisoft.com/performance" 
+                        style="width: 100%; flex: 1; border: none;" 
+                        title="Biotech Quant Screener Live Performance"
+                        loading="lazy">
+                    </iframe>
                 </div>
             </div>
 
