@@ -139,6 +139,11 @@ function initPortfolioFilters() {
 
 /* Live Demo Switcher */
 function switchToDemo(demoKey, event) {
+    if (demoKey === 'quant') {
+        window.open('https://stocks.usintellisoft.com/', '_blank');
+        return;
+    }
+
     if (event && event.preventDefault) {
         event.preventDefault();
     }

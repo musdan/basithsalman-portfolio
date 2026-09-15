@@ -346,9 +346,9 @@
 
             <!-- Demo Selector Tabs -->
             <div class="demo-tabs">
-                <button class="demo-tab-btn active" id="tab-quant" onclick="switchToDemo('quant', event)">
-                    <i class="fas fa-table-cells"></i> Quant Screener Demo
-                </button>
+                <a href="https://stocks.usintellisoft.com/" target="_blank" class="demo-tab-btn active" id="tab-quant" style="text-decoration:none; display:inline-flex; align-items:center; gap:6px;">
+                    <i class="fas fa-table-cells"></i> Quant Screener (stocks.usintellisoft.com) <i class="fas fa-external-link-alt" style="font-size:11px;"></i>
+                </a>
                 <button class="demo-tab-btn" id="tab-sentinel" onclick="switchToDemo('sentinel')">
                     <i class="fas fa-terminal"></i> Security Sentinel CLI
                 </button>
@@ -360,23 +360,17 @@
                 </button>
             </div>
 
-            <!-- Demo 1: Quant Stock Screener Live Performance Dashboard -->
+            <!-- Demo 1: Quant Stock Screener Live Launcher -->
             <div class="demo-wrapper active" id="demo-quant">
-                <div class="demo-box" style="padding: 0; overflow: hidden; border-radius: 12px; height: 800px; display: flex; flex-direction: column;">
-                    <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 20px; background: #1e293b; border-bottom: 1px solid #334155;">
-                        <span style="font-size: 14px; font-weight: 600; color: #38bdf8; display: flex; align-items: center; gap: 8px;">
-                            <i class="fas fa-chart-line"></i> Live Biotech Quant Performance Dashboard ($0–5M & Multi-Cohort)
-                        </span>
-                        <a href="https://stocks.usintellisoft.com/performance" target="_blank" style="display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px; background: #0284c7; color: #ffffff; border-radius: 6px; font-size: 13px; font-weight: 600; text-decoration: none; transition: background 0.2s;">
-                            <i class="fas fa-external-link-alt"></i> Open Full Screen
-                        </a>
-                    </div>
-                    <iframe 
-                        src="https://stocks.usintellisoft.com/login?u=admin&p=stockmaster2026" 
-                        style="width: 100%; flex: 1; border: none;" 
-                        title="Biotech Quant Screener Live Performance"
-                        loading="lazy">
-                    </iframe>
+                <div class="demo-box" style="padding: 32px 24px; text-align: center; background: #1e293b; border: 1px solid #334155; border-radius: 16px;">
+                    <div style="font-size: 42px; margin-bottom: 12px;">📈</div>
+                    <h3 style="font-size: 22px; color: #38bdf8; margin-bottom: 8px;">BioQuant Live Stock Screener</h3>
+                    <p style="color: #94a3b8; font-size: 15px; max-width: 600px; margin: 0 auto 24px auto;">
+                        Access the live full-stack biotech stock screening platform featuring real-time market cap cohorts ($0–5M, $5–10M, 52W Lows), clinical trial tracking, and automated SEC EDGAR Form 4 insider analysis.
+                    </p>
+                    <a href="https://stocks.usintellisoft.com/" target="_blank" style="display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; background: linear-gradient(135deg, #0284c7, #2563eb); color: #ffffff; border-radius: 10px; font-size: 16px; font-weight: 700; text-decoration: none; box-shadow: 0 4px 14px rgba(2, 132, 199, 0.4);">
+                        <i class="fas fa-external-link-alt"></i> Open stocks.usintellisoft.com
+                    </a>
                 </div>
             </div>
 
