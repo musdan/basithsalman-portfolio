@@ -140,7 +140,7 @@ function initPortfolioFilters() {
 /* Live Demo Switcher */
 function switchToDemo(demoKey, event) {
     if (demoKey === 'quant') {
-        window.open('https://stocks.usintellisoft.com/', '_blank');
+        window.open('https://stocks.usintellisoft.com/performance', '_blank');
         return;
     }
 
